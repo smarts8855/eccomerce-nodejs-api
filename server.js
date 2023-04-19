@@ -16,10 +16,12 @@ const { errorhandler } = require('./helper/error-handler')
 
 
 
-app.use(cors());
-app.options('*', cors())
+
 
 const app = express()
+
+app.use(cors());
+app.options('*', cors())
 
 //DB config
 const db = require('./config/db').MongoURI;
