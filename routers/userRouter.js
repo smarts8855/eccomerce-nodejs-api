@@ -18,6 +18,13 @@ router.get('/', async (req, res) => {
 
 // post method
 router.post('/register', async (req, res) => {
+    const { email} = req.body;
+    const userFound = await User.findOne({email});
+    if(userFound){
+        return res.json({
+            msg: 'User Already Exist'
+        })
+    }
     let user = new User({
         name: req.body.name,
         email: req.body.email,

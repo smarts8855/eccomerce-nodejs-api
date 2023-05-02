@@ -99,8 +99,8 @@ router.put('/:id',uploadOptions.single('image'), async(req, res) => {
     const category = await Category.findById(req.body.category);
     if(!category) return res.status(404).send('Invalid category');
     
-    // const product = await Product.findById(req.body.id);
-    // if(!product) return res.status(404).send('Invalid Product!');
+    const product = await Product.findById(req.body.category);
+    if(!product) return res.status(404).send('Invalid Product!');
 
     const file = req.file;
     let imagepath;
