@@ -4,7 +4,7 @@ const mongoose = require('mongoose')
 const bodyParser = require('body-parser')
 const morgan = require('morgan')
 const cors = require('cors')
-const PORT = process.env.PORT ||5000
+const PORT = process.env.PORT || 5000
 
 const productRouter = require('./routers/productRouter');
 const categoryRouter = require('./routers/categoryRouter');
@@ -24,10 +24,10 @@ app.use(cors());
 app.options('*', cors())
 
 //DB config
-const db = require('./config/db').MongoURI;
+// const db = require('./config/db').MongoURI;
 
 //Database Connection
-mongoose.connect(db, {useNewUrlParser: true, dbName: process.env.DB_NAME})
+mongoose.connect(process.env.CONNECTION_STRING, {useNewUrlParser: true, useUnifiedTopology: true, dbName: process.env.DB_NAME})
 .then(() => console.log('MongoDB Connected'))
 .catch(err => console.log(err));
 
